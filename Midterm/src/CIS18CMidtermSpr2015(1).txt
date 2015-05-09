@@ -1,0 +1,86 @@
+Midterm CIS 18C
+
+Note: Submit the Midterm to my RCC email account mark.lehr@rcc.edu
+with the following subject:  LastName,FirstName - Midterm - 42030.
+Also, submit here in the assignment section as well.  Post any
+questions you have in the bulletin board for clarification purposes.
+
+Submit the solutions/program in a zipped file.  
+Do the best you can and turn in as much as you can.
+
+For all the following problems, make sure you devise testing of the
+algorithms that prove that what you programmed worked as intended.
+I want a menu that runs the programs and returns to the menu for 
+further choices.
+
+Here are the points for each problem
+1 - 10 pts
+2 - 15 pts
+3 - 20 pts
+4 - 10 pts
+5 - 15 pts
+6 - 20 pts
+7 - 20 pts
+8 - 15 pts
+9 - 20 pts
+
+Note:  A Vector is a dynamic Array
+
+1)  Vector - Fill a vector with random inputs.  Write a function
+             vector top(vector x,int p) that returns in a
+	     vector the top p elements of the sorted x input vector.
+
+             Implement with a dynamic array simulating a linked list.
+             
+2)  Vector - Fill a vector with %m numbers.  Write a function
+             vector mode(vector x) that returns a vector that
+             represents the mode of vector x.  Note:  Test for
+             no mode, 1 mode, and multiple modes.
+
+             Implement with a dynamic array simulating a linked list.
+
+3)  Vector - Fill a vector with %m numbers.  Write a function
+             statClass stat(vector x) that returns a class that
+             contains the mode, min, max and average of the x vector 
+             but uses a map to solve the mode problem and returns
+             the important elements for the mode
+             (nModes, freq, {Mode})
+             
+	     An associative array, i.e. a map is a data type composed of (key, value) pairs
+
+4)  List -   Try creating a linked list that implements 1)
+
+5)  List -   Try creating a linked list that implements 2)
+
+6)  List -   Try creating a linked list that implements 3)
+
+7)  List -   A self-organizing list is a list that moves each element
+             to the front of the list whenever it is accessed.  This
+             modification improves the efficiency of the standard
+             implementation if the list is used mostly for look-up.
+             Use inheritance to define a SelfOrganizingList class.  
+             Add a single function that tests if the list
+             contains the element by returning a boolean then putting
+             the element at the front of the list.
+
+8)  Recursion - Implement the power function recursively with float x
+                and int y.
+     
+		Make it O(log n) by halving the function calls
+
+		i.e.  powR(x,y)=a*a if a=powR(x,y/2) when y is even
+                whereas obviously slightly different if y is odd.                     
+
+
+9)  Recursion - Use mutual recursion to implement the following
+                functions
+                              
+                              h(3x)=-(h(x)^3) + 3*(g(x)^2) * h(x)
+                              g(3x)= (g(x)^3) - 3*(h(x)^2) * g(x)
+  
+                      h(x) ~ x - x^3/6 just test if |x| < epsilon
+                      g(x) ~ 1 - x^2/2 just test if |x| < epsilon
+
+		Epsilon -> accuracy to 6 decimal places is good enough.
+ 
+                -1 <= x <= 1 where delx=0.1
