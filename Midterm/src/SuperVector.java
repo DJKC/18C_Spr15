@@ -1,7 +1,8 @@
 
 public class SuperVector{
-	Integer size;
+	int size;
 	Integer[] data;
+	int capacity;
 	
 	SuperVector(){
 		size = 0;
@@ -9,7 +10,12 @@ public class SuperVector{
 	}
 	
 	SuperVector(int size){
-		this.size = 0;
+		if(size < 1)
+			size = 1;
+			
+		this.size = size;
+		
+		data = null;
 		data = new Integer[size];
 	}
 	
@@ -18,10 +24,11 @@ public class SuperVector{
 	}
 	
 	public void push_back(int number){
-		resize();
+		int oldSize = size;
 		
-		data[size] = number;
-		size++;
+		resize();
+
+		data[oldSize] = number;
 	}
 	
 	public void pop_back(){
@@ -37,36 +44,78 @@ public class SuperVector{
 		for(int i = index; i < size - 1; i++)
 			data[i] = data[i + 1];
 		
-		size--;
-		data[size] = null;
+		pop_back();
 		
 		return true;
 	}
 	
 	public void print(){
-		for(Integer i : data)
-			System.out.print(i + " ");
+		
+		//System.out.println("\nE");
+		
+		for(int i = 0; i < data.length; i++){
+			if(i != 0 && i % 5 == 0)
+				System.out.println();
+				
+			System.out.print("data[" + i + "] = " + data[i] + ".");
+		}
 	}
 	
-	public void set(int index, Integer value){
-		if(index < size)
+	public void set(int index, Integer value){		
+		if(index < size){
 			data[index] = value;
+			size++;
+		}
+		
+		else
+			System.out.println("\nNot enough room");
 	}
 	
 	public Integer get(int index){
-		
 		return (index <= size) ? data[index] : null;
 	}
 	
 	public void resize(){
-		Integer[] new_data = new Integer[size * 2];
+		if(arrayFull()){
+			Integer[] new_data = new Integer[size * 2];
+			
+			check();
+			
+			for(int i = 0; i < size; i++){
+				try{new_data[i] = data[i];}
+				catch(Exception e){System.out.println("I: " + i);}
+			}
+			
+			data = null;
+			data = new_data;
+			
+			size *= 2;
+		}
+	}
+	
+	public void check(){
+		System.out.println("Capacity: " + capacity() + "\nSize: " + size);
+	}
+
+	private boolean arrayFull(){		
+		if(data[data.length - 1] == null)
+			System.out.println("not full");
 		
-		for(int i = 0; i < size; i++)
-			new_data[i] = data[i];
+		else
+			System.out.println("full");
 		
-		data = null;
-		data = new_data;
+		System.out.println("\nlast element: " + get(data.length - 1));
 		
-		size *= 2;
+		return (data[data.length - 1] == null ? false : true);
+	}
+	
+	public int capacity(){	
+		int capacity = 0;
+		
+		for(int i = 0; i < data.length; i++)
+			if(data[i] != null)
+				capacity++;
+		
+		return capacity;
 	}
 }
